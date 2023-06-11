@@ -1,0 +1,151 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Fonts/04B_30__.TTF" type="FontFile" id=1]
+[ext_resource path="res://Fonts/Minecraft.ttf" type="FontFile" id=2]
+[ext_resource path="res://Menus/Pause.gd" type="Script" id=3]
+[ext_resource path="res://Menus/Options.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Menus/ShowControls.tscn" type="PackedScene" id=5]
+
+[sub_resource type="FontFile" id=1]
+size = 20
+font_data = ExtResource( 1 )
+
+[sub_resource type="FontFile" id=2]
+size = 15
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="FontFile" id=4]
+size = 15
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="FontFile" id=5]
+size = 15
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="FontFile" id=6]
+size = 15
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="Pause" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color( 0.380392, 0.164706, 0.164706, 1 )
+self_modulate = Color( 0.164706, 0.290196, 0.960784, 0.490196 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="."]
+offset_right = 480.0
+offset_bottom = 56.0
+scale = Vector2( 4, 4 )
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme_override_fonts/font = SubResource( 1 )
+text = "Pause"
+align = 1
+valign = 1
+
+[node name="Resume" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -410.0
+offset_top = -229.0
+offset_right = -202.0
+offset_bottom = -205.0
+scale = Vector2( 4, 4 )
+theme_override_fonts/font = SubResource( 2 )
+theme_override_styles/hover = SubResource( 7 )
+theme_override_styles/normal = SubResource( 3 )
+text = "Resume"
+
+[node name="Show Controls" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -416.0
+offset_top = -100.0
+offset_right = -208.0
+offset_bottom = -76.0
+scale = Vector2( 4, 4 )
+theme_override_fonts/font = SubResource( 4 )
+theme_override_styles/hover = SubResource( 8 )
+theme_override_styles/normal = SubResource( 3 )
+text = "Show Controls"
+
+[node name="Options" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -414.0
+offset_top = 44.0
+offset_right = -206.0
+offset_bottom = 68.0
+scale = Vector2( 4, 4 )
+theme_override_fonts/font = SubResource( 5 )
+theme_override_styles/hover = SubResource( 9 )
+theme_override_styles/normal = SubResource( 3 )
+text = "Options"
+
+[node name="QuitToMain" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -413.0
+offset_top = 178.0
+offset_right = -205.0
+offset_bottom = 202.0
+scale = Vector2( 4, 4 )
+theme_override_fonts/font = SubResource( 6 )
+theme_override_styles/hover = SubResource( 10 )
+theme_override_styles/normal = SubResource( 3 )
+text = "Quit to Main Menu"
+
+[node name="OptionsScene" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="ShowControls" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[connection signal="pressed" from="Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="Show Controls" to="." method="_on_Show_Controls_pressed"]
+[connection signal="pressed" from="Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="QuitToMain" to="." method="_on_QuitToMain_pressed"]

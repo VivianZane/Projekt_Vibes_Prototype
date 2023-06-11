@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Entities/Cameras/CameraMain.gd" type="Script" id=1]
+
+[node name="Camera3D" type="Camera3D"]
+transform = Transform3D( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+keep_aspect = 0
+projection = 1
+size = 30.0
+script = ExtResource( 1 )

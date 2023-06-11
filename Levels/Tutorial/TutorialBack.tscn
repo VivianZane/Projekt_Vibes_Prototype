@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://PV Art/BackgroundFull.png" type="Texture2D" id=1]
+[ext_resource path="res://icon.png" type="Texture2D" id=2]
+[ext_resource path="res://Levels/Tutorial/TextureRect2.gd" type="Script" id=3]
+[ext_resource path="res://Levels/Tutorial/Tutorial.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Menus/PauseController.tscn" type="PackedScene" id=5]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource( 1 )
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+size = Vector2( 1920, 1080 )
+own_world = true
+transparent_bg = true
+handle_input_locally = false
+hdr = false
+render_target_update_mode = 3
+
+[node name="Tutorial" parent="SubViewportContainer/SubViewport" instance=ExtResource( 4 )]
+
+[node name="PauseController" parent="." instance=ExtResource( 5 )]

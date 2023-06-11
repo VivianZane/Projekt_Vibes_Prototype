@@ -1,0 +1,173 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Fonts/Minecraft.ttf" type="FontFile" id=1]
+[ext_resource path="res://Fonts/04B_30__.TTF" type="FontFile" id=2]
+[ext_resource path="res://Menus/MainMenu.gd" type="Script" id=3]
+[ext_resource path="res://Art/Sprites/Sprite2D-0001.png" type="Texture2D" id=4]
+[ext_resource path="res://Menus/Options.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Menus/ShowControls.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Audio/Music/Menu.mp3" type="AudioStream" id=7]
+[ext_resource path="res://Menus/LevelSelect.tscn" type="PackedScene" id=8]
+
+[sub_resource type="FontFile" id=1]
+size = 130
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=8]
+resource_name = "OrbIdle"
+length = 1.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PackedFloat32Array( 0, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ]
+}
+
+[sub_resource type="FontFile" id=4]
+size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="FontFile" id=5]
+size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="FontFile" id=6]
+size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="FontFile" id=7]
+size = 50
+font_data = ExtResource( 1 )
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color( 0.380392, 0.164706, 0.164706, 1 )
+self_modulate = Color( 0.164706, 0.290196, 0.960784, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.007
+offset_bottom = -384.56
+
+[node name="Label" type="Label" parent="VBoxContainer2"]
+offset_right = 1920.0
+offset_bottom = 702.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme_override_fonts/font = SubResource( 1 )
+text = "Projekt Vibes"
+align = 1
+valign = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -541.0
+offset_right = 960.0
+offset_bottom = 541.0
+
+[node name="Sprite2" type="Sprite2D" parent="MarginContainer3"]
+position = Vector2( 970, 172 )
+scale = Vector2( 6.15625, 5.875 )
+texture = ExtResource( 4 )
+hframes = 18
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer3"]
+root_node = NodePath("../Sprite2")
+autoplay = "OrbIdle"
+anims/OrbIdle = SubResource( 8 )
+
+[node name="Start" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = 50.0
+offset_right = 500.0
+offset_bottom = 150.0
+theme_override_fonts/font = SubResource( 4 )
+theme_override_styles/normal = SubResource( 3 )
+text = "Start"
+
+[node name="Show Controls" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = 180.0
+offset_right = 500.0
+offset_bottom = 280.0
+theme_override_fonts/font = SubResource( 5 )
+theme_override_styles/normal = SubResource( 3 )
+text = "Show Controls"
+
+[node name="Options" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = 310.0
+offset_right = 500.0
+offset_bottom = 410.0
+theme_override_fonts/font = SubResource( 6 )
+theme_override_styles/normal = SubResource( 3 )
+text = "Options"
+
+[node name="Quit" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = 440.0
+offset_right = 500.0
+offset_bottom = 540.0
+theme_override_fonts/font = SubResource( 7 )
+theme_override_styles/normal = SubResource( 3 )
+text = "Quit"
+
+[node name="OptionsScene" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="ShowControls" parent="." instance=ExtResource( 6 )]
+visible = false
+
+[node name="LevelSelect" parent="." instance=ExtResource( 8 )]
+visible = false
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -78.0
+autoplay = true
+bus = "Music"
+
+[connection signal="pressed" from="Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Show Controls" to="." method="_on_Show_Controls_pressed"]
+[connection signal="pressed" from="Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]

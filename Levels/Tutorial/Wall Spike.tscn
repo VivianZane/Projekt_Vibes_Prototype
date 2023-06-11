@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://PV Art/spikes2.1.png" type="Texture2D" id=1]
+
+[sub_resource type="BoxShape3D" id=11]
+
+[sub_resource type="StandardMaterial3D" id=39]
+flags_transparent = true
+albedo_texture = ExtResource( 1 )
+uv1_scale = Vector3( 36, -1, 1 )
+
+[sub_resource type="BoxMesh" id=12]
+material = SubResource( 39 )
+
+[node name="Wall Spike" type="Area3D"]
+transform = Transform3D( 5.24536e-07, -0.5, -1.55766e-06, -12, -2.18557e-08, 1.06229e-07, -3.18686e-07, 1.94707e-07, -4, -85.5, 4, -22 )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D( -1, -8.74228e-08, -8.74228e-08, 8.74228e-08, -1, 0, -8.74228e-08, -7.64274e-15, 1, 0, 0, 0 )
+shape = SubResource( 11 )
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D( 1, -4.68638e-15, 7.10543e-15, 4.78828e-14, 1, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 12 )

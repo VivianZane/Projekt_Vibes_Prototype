@@ -1,0 +1,97 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Fonts/04B_30__.TTF" type="FontFile" id=1]
+[ext_resource path="res://Fonts/Minecraft.ttf" type="FontFile" id=2]
+[ext_resource path="res://Menus/LevelSelect.gd" type="Script" id=3]
+
+[sub_resource type="FontFile" id=1]
+size = 100
+font_data = ExtResource( 1 )
+
+[sub_resource type="FontFile" id=4]
+size = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="FontFile" id=5]
+size = 50
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="LevelSelect" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color( 0.380392, 0.164706, 0.164706, 1 )
+self_modulate = Color( 0.164706, 0.290196, 0.960784, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.007
+offset_bottom = 0.109985
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.007
+offset_bottom = -889.56
+size_flags_horizontal = 3
+size_flags_vertical = 5
+theme_override_fonts/font = SubResource( 1 )
+text = "Select Level"
+align = 1
+valign = 1
+
+[node name="Tutorial" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.0
+offset_top = -221.0
+offset_right = 116.0
+offset_bottom = -182.0
+theme_override_fonts/font = SubResource( 4 )
+theme_override_styles/normal = SubResource( 3 )
+text = "Tutorial"
+
+[node name="Level 1" type="Button" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.007
+offset_left = 764.0
+offset_top = 420.0
+offset_right = -754.0
+offset_bottom = -574.56
+theme_override_fonts/font = SubResource( 5 )
+theme_override_styles/normal = SubResource( 3 )
+text = "Level 1"
+
+[node name="Back" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -99.5
+offset_top = -180.0
+offset_right = 99.5
+offset_bottom = -129.0
+theme_override_colors/font_color = Color( 0, 0, 0, 1 )
+theme_override_fonts/font = SubResource( 5 )
+theme_override_styles/normal = SubResource( 6 )
+text = "Back"
+
+[connection signal="pressed" from="Tutorial" to="." method="_on_Tutorial_pressed"]
+[connection signal="pressed" from="Level 1" to="." method="_on_Level_1_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]

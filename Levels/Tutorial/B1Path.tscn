@@ -1,0 +1,66 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://PV Art/badelectric.png" type="Texture2D" id=1]
+[ext_resource path="res://Levels/Tutorial/B1Path.gd" type="Script" id=2]
+[ext_resource path="res://Levels/Tutorial/Dash.gd" type="Script" id=3]
+
+[sub_resource type="Curve3D" id=21]
+_data = {
+"points": PackedVector3Array(  ),
+"tilts": PackedFloat32Array(  )
+}
+
+[sub_resource type="BoxShape3D" id=16]
+
+[sub_resource type="StandardMaterial3D" id=20]
+flags_transparent = true
+albedo_texture = ExtResource( 1 )
+uv1_scale = Vector3( 3, 0.82, 1 )
+
+[sub_resource type="BoxMesh" id=17]
+material = SubResource( 20 )
+
+[sub_resource type="StandardMaterial3D" id=41]
+flags_transparent = true
+albedo_texture = ExtResource( 1 )
+uv1_scale = Vector3( 3, 2, 1 )
+
+[sub_resource type="BoxMesh" id=42]
+material = SubResource( 41 )
+
+[sub_resource type="StandardMaterial3D" id=43]
+flags_transparent = true
+albedo_texture = ExtResource( 1 )
+uv1_scale = Vector3( 3, 2, 1 )
+
+[sub_resource type="BoxMesh" id=44]
+material = SubResource( 43 )
+
+[node name="B1Path" type="Path3D"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -37, -17, 5 )
+curve = SubResource( 21 )
+script = ExtResource( 2 )
+
+[node name="Dash" type="PathFollow3D" parent="."]
+rotation_mode = 0
+script = ExtResource( 3 )
+
+[node name="Block" type="Area3D" parent="Dash"]
+transform = Transform3D( 1, 0, 0, 0, -4.37114e-08, 3, 0, -1, -1.31134e-07, 0, 1, -9.53674e-07 )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dash/Block"]
+shape = SubResource( 16 )
+
+[node name="Top" type="MeshInstance3D" parent="Dash/Block/CollisionShape3D"]
+transform = Transform3D( 1, 0, 0, 0, 1, -2.8488e-09, 0, 8.63272e-09, 0.33, 0, 0, 0.666667 )
+mesh = SubResource( 17 )
+
+[node name="Mid" type="MeshInstance3D" parent="Dash/Block/CollisionShape3D"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 0.33, -0.00718689, 0.00989723, 0.0031662 )
+mesh = SubResource( 42 )
+
+[node name="Bot" type="MeshInstance3D" parent="Dash/Block/CollisionShape3D"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 0.33, 0, 0, -0.666667 )
+mesh = SubResource( 44 )
+
+[connection signal="body_entered" from="Dash/Block" to="." method="_on_Block_body_entered"]

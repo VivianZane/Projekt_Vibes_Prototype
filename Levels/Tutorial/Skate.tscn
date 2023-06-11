@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Levels/Tutorial/Skate.gd" type="Script" id=1]
+[ext_resource path="res://PV Art/spikes2.2.png" type="Texture2D" id=2]
+
+[sub_resource type="BoxShape3D" id=23]
+
+[sub_resource type="StandardMaterial3D" id=25]
+flags_transparent = true
+albedo_texture = ExtResource( 2 )
+uv1_scale = Vector3( 12, 2, 1 )
+
+[sub_resource type="BoxMesh" id=24]
+material = SubResource( 25 )
+
+[node name="Skate" type="PathFollow3D"]
+script = ExtResource( 1 )
+
+[node name="SkateHaz" type="Area3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 6, 0, 0, 0, 6, 0, 5, -1 )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SkateHaz"]
+shape = SubResource( 23 )
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SkateHaz"]
+transform = Transform3D( -2.42407e-07, -1, 0, 1, 2.6756e-07, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 24 )

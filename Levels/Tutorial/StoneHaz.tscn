@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://PV Art/badelectric.png" type="Texture2D" id=1]
+[ext_resource path="res://Levels/Tutorial/StoneHaz.gd" type="Script" id=2]
+[ext_resource path="res://Levels/Tutorial/StoneHazF.gd" type="Script" id=3]
+
+[sub_resource type="Curve3D" id=26]
+_data = {
+"points": PackedVector3Array(  ),
+"tilts": PackedFloat32Array(  )
+}
+
+[sub_resource type="BoxShape3D" id=27]
+
+[sub_resource type="StandardMaterial3D" id=47]
+flags_transparent = true
+albedo_texture = ExtResource( 1 )
+uv1_scale = Vector3( 3, 2, 1 )
+
+[sub_resource type="BoxMesh" id=28]
+material = SubResource( 47 )
+
+[node name="StoneHaz" type="Path3D"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50, -6, -5 )
+curve = SubResource( 26 )
+script = ExtResource( 2 )
+
+[node name="StoneHazF" type="PathFollow3D" parent="."]
+script = ExtResource( 3 )
+
+[node name="StoneHaz" type="Area3D" parent="StoneHazF"]
+transform = Transform3D( 4, 0, 0, 0, 4, 0, 0, 0, 1, 0, 1, 0 )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StoneHazF/StoneHaz"]
+shape = SubResource( 27 )
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StoneHazF/StoneHaz/CollisionShape3D"]
+mesh = SubResource( 28 )
+skeleton = NodePath("../..")
+
+[connection signal="body_entered" from="StoneHazF/StoneHaz" to="." method="_on_StoneHaz_body_entered"]

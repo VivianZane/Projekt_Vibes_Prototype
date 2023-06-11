@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://PV Art/spikes2.2.png" type="Texture2D" id=1]
+[ext_resource path="res://Levels/Level 1/sSpikeFol.gd" type="Script" id=2]
+[ext_resource path="res://Levels/Level 1/sSpike.gd" type="Script" id=3]
+
+[sub_resource type="Curve3D" id=2]
+_data = {
+"points": PackedVector3Array(  ),
+"tilts": PackedFloat32Array(  )
+}
+
+[sub_resource type="BoxShape3D" id=3]
+
+[sub_resource type="StandardMaterial3D" id=4]
+flags_transparent = true
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="PlaneMesh" id=5]
+material = SubResource( 4 )
+
+[node name="sSpike" type="Path3D"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 77, 0, 39 )
+curve = SubResource( 2 )
+script = ExtResource( 3 )
+
+[node name="sSpikeFol" type="PathFollow3D" parent="."]
+script = ExtResource( 2 )
+
+[node name="sSpikeArea" type="Area3D" parent="sSpikeFol"]
+transform = Transform3D( 1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="sSpikeCol" type="CollisionShape3D" parent="sSpikeFol/sSpikeArea"]
+shape = SubResource( 3 )
+
+[node name="sSpikeMesh" type="MeshInstance3D" parent="sSpikeFol/sSpikeArea/sSpikeCol"]
+transform = Transform3D( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+mesh = SubResource( 5 )
+
+[connection signal="body_entered" from="sSpikeFol/sSpikeArea" to="." method="_on_sSpikeArea_body_entered"]

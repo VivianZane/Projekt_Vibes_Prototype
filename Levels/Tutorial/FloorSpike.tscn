@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://PV Art/spikes2.2.png" type="Texture2D" id=1]
+
+[sub_resource type="BoxShape3D" id=13]
+
+[sub_resource type="StandardMaterial3D" id=45]
+flags_transparent = true
+albedo_texture = ExtResource( 1 )
+uv1_scale = Vector3( 6, 1, 1 )
+
+[sub_resource type="QuadMesh" id=46]
+material = SubResource( 45 )
+
+[node name="FloorSpike" type="Area3D"]
+transform = Transform3D( 4, 0, 0, 0, 0.5, 0, 0, 0, 4, -82, -18.5, -22 )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource( 13 )
+
+[node name="MeshInstance2" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D( 2, 0, 0, 0, 2, 0, 0, 0, 1, -3.8147e-06, -0.0195427, 0.746835 )
+mesh = SubResource( 46 )
+
+[node name="MeshInstance3" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D( 2, 0, 0, 0, 2, 0, 0, 0, 1, -3.8147e-06, -0.0195427, 0.996835 )
+mesh = SubResource( 46 )
+
+[node name="MeshInstance4" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D( 2, 0, 0, 0, 2, 0, 0, 0, 1, -3.8147e-06, -0.0195427, 0.496835 )
+mesh = SubResource( 46 )
+
+[node name="MeshInstance5" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D( 2, 0, 0, 0, 2, 0, 0, 0, 1, -3.8147e-06, -0.0195427, 0.246835 )
+mesh = SubResource( 46 )
+
+[node name="MeshInstance6" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D( 2, 0, 0, 0, 2, 0, 0, 0, 1, -3.8147e-06, -0.0195427, -0.00316501 )
+mesh = SubResource( 46 )
+
+[node name="MeshInstance7" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D( 2, 0, 0, 0, 2, 0, 0, 0, 1, -3.8147e-06, -0.0195427, -0.253165 )
+mesh = SubResource( 46 )
+
+[node name="MeshInstance8" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D( 2, 0, 0, 0, 2, 0, 0, 0, 1, -3.8147e-06, -0.0195427, -0.503165 )
+mesh = SubResource( 46 )
+
+[node name="MeshInstance9" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D( 2, 0, 0, 0, 2, 0, 0, 0, 1, -3.8147e-06, -0.0195427, -0.753165 )
+mesh = SubResource( 46 )

@@ -1,0 +1,113 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Fonts/Minecraft.ttf" type="FontFile" id=1]
+[ext_resource path="res://Menus/WinScreen.gd" type="Script" id=2]
+[ext_resource path="res://Fonts/04B_30__.TTF" type="FontFile" id=3]
+
+[sub_resource type="FontFile" id=4]
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="FontFile" id=6]
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="FontFile" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="FontFile" id=7]
+size = 70
+font_data = ExtResource( 3 )
+
+[node name="WinScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color( 0.380392, 0.164706, 0.164706, 1 )
+self_modulate = Color( 0.164706, 0.290196, 0.960784, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -151.0
+offset_right = 960.0
+offset_bottom = 129.0
+
+[node name="Continue" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 110.0
+offset_top = 40.0
+offset_right = 210.0
+offset_bottom = 60.0
+theme_override_fonts/font = SubResource( 4 )
+theme_override_styles/normal = SubResource( 5 )
+text = "Continue"
+
+[node name="LevelSelect" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 40.0
+offset_right = 50.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color( 1, 1, 1, 1 )
+theme_override_fonts/font = SubResource( 6 )
+theme_override_styles/normal = SubResource( 3 )
+text = "Level Select"
+
+[node name="QuitToMain" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = 40.0
+offset_right = -110.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color( 0, 0, 0, 1 )
+theme_override_fonts/font = SubResource( 1 )
+theme_override_styles/normal = SubResource( 2 )
+text = "Quit to Main"
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -246.0
+offset_top = -82.0
+offset_right = 246.0
+offset_bottom = 36.0
+theme_override_fonts/font = SubResource( 7 )
+text = "Nice Job!"
+
+[connection signal="pressed" from="Continue" to="." method="_on_Continue_pressed"]
+[connection signal="pressed" from="LevelSelect" to="." method="_on_LevelSelect_pressed"]
+[connection signal="pressed" from="QuitToMain" to="." method="_on_QuitToMain_pressed"]

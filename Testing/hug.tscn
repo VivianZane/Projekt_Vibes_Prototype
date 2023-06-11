@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://CubeMeshLibMK7.tres" type="MeshLibrary" id=1]
+[ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=2]
+
+[node name="hug" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PackedInt32Array( -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 1, 0, -65535, 1, 0, -65531, 1, 0, -3, 1, 0, -2, 1, 0, -1, 1, 0, -65536, 2, 0, -3, 2, 0, -2, 2, 0, -1, 2, 0, -65536, 3, 0, -65536, 65533, 0, -1, 65533, 0, -65536, 65534, 0, -65535, 65534, 0, -1, 65534, 0, -65536, 65535, 0, -65535, 65535, 0, -65534, 65535, 0, -2, 65535, 0, -1, 65535, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
